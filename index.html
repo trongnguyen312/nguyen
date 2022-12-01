@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Nguyen</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>nhtn</title>
+	<link rel="stylesheet" type="text/css" href="csscard.css">
 </head>
 <body>
-<p>Nguyen</p>
-<p>Hello .....</p>
+	<div class="search">
+		<input 
+		type="text" 
+		name="searchbar"
+		id="searchbar"
+		placeholder="Search something here" 
+		>
+	</div>
+	<div class="container">
+		<div class="card">
+			<div class="box">
+				<div class="content">
+					<h2>01</h2>
+					<h3>Card One</h3>
+					<p>Fresh, homemade pizza crust dough topped with delectable sauce, premium meats, fresh veggies and cheese – and don’t forget Sandy’s signature sweet red peppers!Fresh, homemade pizza crust dough topped with delectable sauce, premium meats, fresh veggies and cheese – and don’t forget Sandy’s </p>
+					<a href="#">Read More</a>
+				</div>
+			</div>
+		</div>	
+			<div class="card">
+			<div class="box">
+				<div class="content">
+					<h2>02</h2>
+					<h3>Card Two</h3>
+					<p>Fresh, homemade pizza crust dough topped with delectable sauce, premium meats, fresh veggies and cheese – and don’t forget Sandy’s signature sweet red peppers!Fresh, homemade pizza crust dough topped with delectable sauce, premium meats, fresh veggies and cheese – and don’t forget Sandy’s</p>
+					<a href="#">Read More</a>
+				</div>
+			</div>
+		</div>
+			<div class="card">
+			<div class="box">
+				<div class="content">
+					<h2>03</h2>
+					<h3>Card Three</h3>
+					<p>Fresh, homemade pizza crust dough topped with delectable sauce, premium meats, fresh veggies and cheese – and don’t forget Sandy’s signature sweet red peppers!Fresh, homemade pizza crust dough topped with delectable sauce, premium meats, fresh veggies and cheese – and don’t forget Sandy’s</p>
+					<a href="#">Read More</a>
+				</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+		const searchbar = document.getElementById('searchbar');
+		searchbar.addEventListener('keyup', (e) =>{
+			console.log(e.target.value);
+		});
+	</script>
 </body>
 </html>
