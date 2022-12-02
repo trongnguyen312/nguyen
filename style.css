@@ -10,7 +10,6 @@ body{
 	min-height: 100vh;
 	background: #fff;
 }
-
 .container{
 	display: flex;
 	justify-content: center;
