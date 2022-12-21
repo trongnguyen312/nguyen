@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <h4 class="modal-title"
+      id="myModalLabel1">{{userid ? 'Sửa User' : 'Thêm mới User'}}</h4>
+  <button type="button" class="close" aria-label="Close"
+          (click)="closeDialog()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body" tabindex="0" ngbAutofocus>
+  <form [formGroup]="detailForm">
+    <label class="required">Tên User</label>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="name" placeholder="Nhập tên User"/>
+      <span class="invalid-form form-text text-danger" *ngIf="!name.value && (name.dirty || name.touched)">
+            {{'Tên User không được bỏ trống' }}
+      </span>
+    </div>
+
+    <!-- <label class="required">Telegram</label>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="telegram" placeholder="Nhập tên User"/>
+      <span class="invalid-form form-text text-danger" *ngIf="!telegram.value && (telegram.dirty || telegram.touched)">
+            {{'Telegram không được bỏ trống' }}
+      </span>
+    </div>
+
+    <label class="required">Jira</label>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="jira" placeholder="Nhập tên User"/>
+      <span class="invalid-form form-text text-danger" *ngIf="!jira.value && (jira.dirty || jira.touched)">
+            {{'Jira không được bỏ trống' }}
+      </span>
+    </div>
+
+    <label class="required">Status</label>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="status" placeholder="Nhập tên User"/>
+      <span class="invalid-form form-text text-danger" *ngIf="!status.value && (status.dirty || status.touched)">
+            {{'Status không được bỏ trống' }}
+      </span>
+    </div> -->
+
+    <label class="required">Mô tả: </label>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="description"
+             [disabled]="userid" trim="blur" placeholder="Nhập mô tả"/>
+      <span class="invalid-form form-text text-danger" *ngIf="!description.value && (description.dirty || description.touched)">
+            {{'Mô tả không được bỏ trống' }}
+      </span>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button [disabled]="loading"
+          type="button" class="btn btn-primary" (click)="addOrEdit()" rippleEffect>
+    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Lưu
+  </button>
+  <button type="button" class="btn btn-outline-danger"
+          (click)="closeDialog()" rippleEffect>
+    Huỷ bỏ
+  </button>
+</div>

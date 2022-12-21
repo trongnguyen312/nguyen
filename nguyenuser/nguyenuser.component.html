@@ -1,0 +1,112 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <section class="quiz-wrapper">
+      <div class="card">
+        <h5 class="card-header">Quản lý User</h5>
+        <div class="card-body">
+          <div class="quiz-filter">
+            <form>
+              <div class="row">
+                <div class="col-12 col-md-4">
+                  <fieldset class="form-group">
+                    <label>Tên User: </label>
+                    <input type="text" class="form-control" [(ngModel)]="keyword"
+                           name="keyword" trim="blur" placeholder="Nhập tên user cần tìm kiếm"/>
+                  </fieldset>
+                </div>
+                <div class="col-12 col-md-4 mb" style="padding-top: 10px">
+                  <button class="btn btn-primary ml-1" rippleEffect (click)="search()">
+                    <i data-feather="plus" class="d-sm-none d-inline-block mr-0 mr-sm-1"></i>
+                    <span class="d-none d-sm-inline-block">Tìm kiếm</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header justify-content-end">
+          <button class="btn btn-primary ml-1" rippleEffect
+                  (click)="modalOpenForm(null)">
+            <i data-feather="plus" class="d-sm-none d-inline-block mr-0 mr-sm-1"></i>
+            <span class="d-none d-sm-inline-block">Thêm mới</span>
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th style="width: 70px" class="text-center">Stt</th>
+              <th class="text-left">Tên User</th>
+              <th class="text-left">Mô tả</th>
+              <th class="text-left">Telegram</th>
+              <th class="text-left">Jira</th>
+              <th class="text-left">Status</th>
+              <th class="text-left">Hành động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let data of listDataTable; let index = index">
+              <td style="width: 70px" class="text-center">{{index+1}}</td>
+              <td class="text-left"></td>
+              <td class="text-left"><td>
+              <td class="text-center">
+                <div ngbDropdown container="body">
+                  <button ngbDropdownToggle type="button" class="btn icon-btn btn-sm hide-arrow"
+                          rippleEffect>
+                    <span [data-feather]="'more-vertical'" [class]="'cursor-pointer'"></span>
+                  </button>
+                  <div ngbDropdownMenu>
+                    <a ngbDropdownItem (click)="modalOpenForm(data?.id)">
+                      <span [data-feather]="'edit'" [size]="16" [class]="'mr-50'"></span> Edit
+                    </a>
+                    <a ngbDropdownItem (click)="modalConfirm(modalPrimary, data?.id)">
+                      <span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Delete
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="col-12 d-flex justify-content-end align-items-center">
+            <span class="mr-1 mb-1">Total: {{totalRecords}}</span>
+            <ngb-pagination [collectionSize]="totalRecords"
+                            [(page)]="_pageIndex" [maxSize]="5"
+                            [rotate]="true"
+                            [ellipses]="false"
+                            (pageChange)="pageChange($event)"
+                            class="d-flex justify-content-end"
+                            aria-label=" pagination">
+              <ng-template ngbPaginationPrevious>
+                <span [data-feather]="'chevron-left'" [size]="18" [class]="'font-weight-bolder'"></span>
+              </ng-template>
+              <ng-template ngbPaginationNext>
+                <span [data-feather]="'chevron-right'" [size]="18" [class]="'font-weight-bolder'"></span>
+              </ng-template>
+            </ngb-pagination>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<ng-template #modalPrimary let-modal #modalId>
+  <div class="modal-header">
+    <h5 class="modal-title" id="myModalLabel160">Xác nhận</h5>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" tabindex="0" ngbAutofocus>
+    Xác nhận xóa bản ghi này
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="delete(); modal.close()" rippleEffect>
+      Đồng ý
+    </button>
+  </div>
+</ng-template>
+
